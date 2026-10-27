@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الفاتح للبرمجيات | Alfatih Software</title>
+
+    <!-- Favicon & Brand Icon -->
+    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="apple-touch-icon" href="logo.png">
+
+    <!-- Google Fonts: IBM Plex Sans Arabic & Amiri for Distinction -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,700;1,400&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Montserrat:wght@500;700&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brandDark: '#0B0F17',
+                        brandCard: '#131B29',
+                        brandAccent: '#3B82F6',
+                        brandTeal: '#14B8A6',
+                        brandPurple: '#8B5CF6'
+                    },
+                    fontFamily: {
+                        arabic: ['"IBM Plex Sans Arabic"', 'sans-serif'],
+                        brandTitle: ['"Amiri"', 'serif'],
+                        english: ['"Montserrat"', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'IBM Plex Sans Arabic', sans-serif;
+            background-color: #0B0F17;
+            color: #F3F4F6;
+            overflow-x: hidden;
+        }
+
+        /* Glassmorphism Navigation */
+        .nav-glass {
+            background: rgba(11, 15, 23, 0.88);
+            backdrop-filter: blur(14px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        /* Hero & Section Glow Effects */
+        .glow-bg {
+            position: absolute;
+            width: 380px;
+            height: 380px;
+            border-radius: 50%;
+            filter: blur(130px);
+            opacity: 0.35;
+            pointer-events: none;
+        }
+
+        .glow-blue { background: #3B82F6; }
+        .glow-teal { background: #14B8A6; }
+        .glow-purple { background: #8B5CF6; }
+
+        /* Premium Brand Glow */
+        .brand-glow {
+            box-shadow: 0 0 35px rgba(59, 130, 246, 0.35);
+        }
+
+        /* Card Hover Effects */
+        .service-card {
+            background: #131B29;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .service-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(59, 130, 246, 0.4);
+            box-shadow: 0 12px 35px -10px rgba(59, 130, 246, 0.3);
+        }
+
+        /* Form Input Styles */
+        .custom-input {
+            background: rgba(19, 27, 41, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #FFFFFF;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .custom-input:focus {
+            outline: none;
+            border-color: #3B82F6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+        }
+    </style>
+</head>
+<body class="bg-brandDark text-slate-100 min-h-screen flex flex-col justify-between selection:bg-brandAccent selection:text-white">
+
+    <!-- Header / Navbar -->
+    <header class="fixed top-0 left-0 right-0 z-50 nav-glass">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            
+            <!-- Brand Logo (Prominent Image) -->
+            <a href="#" class="flex items-center gap-3.5 group">
+                <div class="relative flex items-center justify-center">
+                    <img src="logo.png" alt="شعار الفاتح للبرمجيات" class="w-12 h-12 object-contain rounded-xl p-0.5 bg-slate-900 border border-blue-500/30 brand-glow group-hover:scale-110 transition-transform duration-300">
+                </div>
+                <div class="flex flex-col">
+                    <span class="font-bold text-xl tracking-tight text-white group-hover:text-blue-400 transition-colors">الفاتح للبرمجيات</span>
+                    <span class="text-[10px] text-slate-400 tracking-widest font-english uppercase">Alfatih Software</span>
+                </div>
+            </a>
+
+            <!-- Desktop Links -->
+            <nav class="hidden md:flex items-center gap-7 text-sm font-medium text-slate-300">
+                <a href="#home" class="hover:text-brandAccent transition-colors">الرئيسية</a>
+                <a href="#services" class="hover:text-brandAccent transition-colors">خدماتنا</a>
+                <a href="#apps" class="hover:text-brandAccent transition-colors">التطبيقات والأنظمة</a>
+                <a href="#blog" class="hover:text-brandAccent transition-colors">المقالات</a>
+                <a href="#solutions" class="hover:text-brandAccent transition-colors">لماذا نحن</a>
+                <a href="#contact" class="hover:text-brandAccent transition-colors">تواصل معنا</a>
+            </nav>
+
+            <!-- Call To Action -->
+            <div class="hidden md:flex items-center">
+                <a href="#contact" class="bg-gradient-to-r from-brandAccent to-blue-600 hover:from-blue-600 hover:to-brandAccent text-white font-medium text-sm px-5 py-2.5 rounded-xl shadow-lg shadow-blue-500/25 hover:shadow-blue-500/40 transition-all duration-200 hover:-translate-y-0.5">
+                    اطلب استشارتك
+                </a>
+            </div>
+
+            <!-- Mobile Menu Toggle Button -->
+            <button id="mobileMenuBtn" aria-label="القائمة" class="md:hidden p-2 rounded-lg text-slate-300 hover:bg-slate-800 focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path id="menuIcon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Mobile Navigation Drawer -->
+        <div id="mobileMenu" class="hidden md:hidden bg-brandCard border-b border-slate-800 px-4 pt-2 pb-6 space-y-3">
+            <a href="#home" class="mobile-link block px-3 py-2 rounded-md text-base font-medium text-slate-200 hover:bg-slate-800">الرئيسية</a>
+            <a href="#services" class="mobile-link block px-3 py-2 rounded-md text-base font-medium text-slate-200 hover:bg-slate-800">خدماتنا</a>
+            <a href="#apps" class="mobile-link block px-3 py-2 rounded-md text-base font-medium text-slate-200 hover:bg-slate-800">التطبيقات والأنظمة</a>
+            <a href="#blog" class="mobile-link block px-3 py-2 rounded-md text-base font-medium text-slate-200 hover:bg-slate-800">المقالات</a>
+            <a href="#solutions" class="mobile-link block px-3 py-2 rounded-md text-base font-medium text-slate-200 hover:bg-slate-800">لماذا نحن</a>
+            <a href="#contact" class="mobile-link block px-3 py-2 rounded-md text-base font-medium text-slate-200 hover:bg-slate-800">تواصل معنا</a>
+            <a href="#contact" class="mobile-link block text-center bg-brandAccent text-white px-4 py-2.5 rounded-xl font-medium shadow-md">اطلب استشارتك</a>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="flex-grow pt-20">
+
+        <!-- Hero Section -->
+        <section id="home" class="relative min-h-[85vh] flex items-center justify-center px-4 sm:px-6 lg:px-8 overflow-hidden py-20">
+            <!-- Background Glow Dynamic Elements -->
+            <div class="glow-bg glow-blue -top-10 right-10"></div>
+            <div class="glow-bg glow-purple bottom-10 -left-10"></div>
+
+            <div class="max-w-4xl mx-auto text-center relative z-10 space-y-8">
+                
+                <!-- Central Grand Brand Showcase -->
+                <div class="inline-flex flex-col items-center justify-center p-4 rounded-3xl bg-slate-900/60 border border-blue-500/20 backdrop-blur-md shadow-2xl brand-glow mb-2">
+                    <img src="logo.png" alt="علامة الفاتح للبرمجيات" class="w-28 h-28 sm:w-36 sm:h-36 object-contain drop-shadow-[0_0_20px_rgba(59,130,246,0.6)] animate-pulse">
+                </div>
+
+                <!-- Status Badge -->
+                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-800/80 border border-slate-700/60 text-xs font-medium text-blue-400 backdrop-blur-sm shadow-inner">
+                    <span class="w-2 h-2 rounded-full bg-brandTeal animate-pulse"></span>
+                    <span>حلول برمجية متقدمة وموثوقة</span>
+                </div>
+
+                <!-- Main Headline -->
+                <h1 class="text-4xl sm:text-6xl font-extrabold text-white leading-tight sm:leading-tight">
+                    تقنية مصممة <span class="bg-gradient-to-l from-brandAccent via-brandTeal to-purple-400 bg-clip-text text-transparent">لتعمل لأجلك</span>
+                </h1>
+
+                <!-- Subtitle -->
+                <p class="text-lg sm:text-xl text-slate-300 max-w-2xl mx-auto leading-relaxed">
+                    أدوات ذكية، حلول متكاملة، وأنظمة مخصصة تمنح فريقك مساحة أكبر للإنجاز والارتقاء بأعمالك نحو المستقبل.
+                </p>
+
+                <!-- CTA Buttons -->
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
+                    <a href="#contact" class="w-full sm:w-auto bg-gradient-to-r from-brandAccent to-blue-600 hover:from-blue-600 hover:to-brandAccent text-white font-semibold px-8 py-3.5 rounded-xl shadow-xl shadow-blue-500/25 transition-all duration-200 hover:-translate-y-0.5 text-center">
+                        ابدأ مشروعك الآن
+                    </a>
+                    <a href="#apps" class="w-full sm:w-auto bg-slate-800/80 hover:bg-slate-700/80 border border-slate-700 text-slate-200 font-semibold px-8 py-3.5 rounded-xl transition-all duration-200 text-center">
+                        استعرض التطبيقات والأنظمة
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" class="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto relative">
+            <div class="glow-bg glow-teal top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"></div>
+
+            <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+                <h2 class="text-3xl sm:text-4xl font-bold text-white">خدماتنا البرمجية</h2>
+                <p class="text-slate-400 text-base sm:text-lg">نقدم خيارات برمجية متكاملة مصممة بعناية لتلبية متطلبات السوق بمرونة وكفاءة عالية.</p>
+            </div>
+
+            <!-- Services Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 relative z-10">
+                
+                <!-- Service Card 1 -->
+                <div class="service-card p-6 rounded-2xl flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-brandAccent mb-5">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3">تطوير البرمجيات والأنظمة الخاصة</h3>
+                        <p class="text-slate-400 text-sm leading-relaxed">بناء أنظمة وإدارات مخصصة تلائم طبيعة عملك الدقيقة لرفع الإنتاجية وتنظيم البيانات.</p>
+                    </div>
+                </div>
+
+                <!-- Service Card 2 -->
+                <div class="service-card p-6 rounded-2xl flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 rounded-xl bg-teal-500/10 border border-teal-500/20 flex items-center justify-center text-brandTeal mb-5">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3">تطبيقات الجوال iOS و Android</h3>
+                        <p class="text-slate-400 text-sm leading-relaxed">تطوير تطبيقات جوال سريعة، سلسة، وآمنة تضمن تجربة مستخدم استثنائية على كل الشاشات.</p>
+                    </div>
+                </div>
+
+                <!-- Service Card 3 -->
+                <div class="service-card p-6 rounded-2xl flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 rounded-xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center text-brandPurple mb-5">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3">أدوات وأتمتة ذكية وتكامل الأنظمة</h3>
+                        <p class="text-slate-400 text-sm leading-relaxed">ربط الأنظمة ببعضها وأتمتة المهام المكررة لتقليل الأخطاء البشرية وتسريع الأداء.</p>
+                    </div>
+                </div>
+
+                <!-- Service Card 4 -->
+                <div class="service-card p-6 rounded-2xl flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 rounded-xl bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center text-indigo-400 mb-5">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3">تصميم واجهات وتجربة المستخدم</h3>
+                        <p class="text-slate-400 text-sm leading-relaxed">واجهات عصرية وجذابة تبسط استخدام البرمجيات المعقدة وتحقق أعلى معدلات تحويل.</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Apps & Software Solutions Section -->
+        <section id="apps" class="py-24 bg-slate-900/60 border-y border-slate-800/80 px-4 sm:px-6 lg:px-8 relative">
+            <div class="max-w-7xl mx-auto space-y-12">
+                
+                <div class="text-center max-w-3xl mx-auto space-y-4">
+                    <span class="text-brandTeal font-semibold text-sm tracking-wider uppercase">حلولنا الجاهزة للتنزيل والاستخدام</span>
+                    <h2 class="text-3xl sm:text-4xl font-bold text-white">التطبيقات والأنظمة البرمجية</h2>
+                    <p class="text-slate-400">استكشف أنظمتنا المعتمدة وتطبيقات الجوال الجاهزة للتنفيذ المباشر والتحميل.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- App Card 1 -->
+                    <div class="bg-brandCard border border-slate-800 rounded-2xl p-6 flex flex-col justify-between hover:border-brandAccent transition-all duration-300 shadow-xl">
+                        <div class="space-y-4">
+                            <div class="flex items-center justify-between">
+                                <img src="logo.png" alt="شعار النظام" class="w-12 h-12 rounded-xl object-cover border border-slate-700">
+                                <span class="text-xs px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-400 font-medium">جاهز للتحميل</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-white">نظام الفاتح لإدارة المؤسسات</h3>
+                            <p class="text-slate-400 text-sm leading-relaxed">منظومة إدارية شاملة لإدارة المبيعات، المخزون، والتقارير المالية بدقة وكفاءة عالية.</p>
+                        </div>
+                        <div class="pt-6 border-t border-slate-800/80 flex items-center justify-between mt-6">
+                            <span class="text-xs text-slate-500">الإصدار 2.4 | Android / Web</span>
+                            <a href="#contact" class="bg-brandAccent/20 hover:bg-brandAccent text-brandAccent hover:text-white font-medium text-xs px-4 py-2 rounded-lg transition-colors">تحميل النسخة</a>
+                        </div>
+                    </div>
+
+                    <!-- App Card 2 -->
+                    <div class="bg-brandCard border border-slate-800 rounded-2xl p-6 flex flex-col justify-between hover:border-brandAccent transition-all duration-300 shadow-xl">
+                        <div class="space-y-4">
+                            <div class="flex items-center justify-between">
+                                <img src="logo.png" alt="شعار التطبيق" class="w-12 h-12 rounded-xl object-cover border border-slate-700">
+                                <span class="text-xs px-3 py-1 rounded-full bg-blue-500/10 text-blue-400 font-medium">تطبيق جوال</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-white">تطبيق التواصل والأتمتة الذكية</h3>
+                            <p class="text-slate-400 text-sm leading-relaxed">تطبيق مخصص لربط الفرق الميدانية وأتمتة إرسال التنبيهات مع دعم كامل باللغة العربية.</p>
+                        </div>
+                        <div class="pt-6 border-t border-slate-800/80 flex items-center justify-between mt-6">
+                            <span class="text-xs text-slate-500">الإصدار 1.0 | iOS & Android</span>
+                            <a href="#contact" class="bg-brandAccent/20 hover:bg-brandAccent text-brandAccent hover:text-white font-medium text-xs px-4 py-2 rounded-lg transition-colors">اطلب تجربة</a>
+                        </div>
+                    </div>
+
+                    <!-- App Card 3 -->
+                    <div class="bg-brandCard border border-slate-800 rounded-2xl p-6 flex flex-col justify-between hover:border-brandAccent transition-all duration-300 shadow-xl">
+                        <div class="space-y-4">
+                            <div class="flex items-center justify-between">
+                                <img src="logo.png" alt="شعار النظام" class="w-12 h-12 rounded-xl object-cover border border-slate-700">
+                                <span class="text-xs px-3 py-1 rounded-full bg-purple-500/10 text-purple-400 font-medium">نظام مخصص</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-white">منصة إدارة خدمة العملاء CRM</h3>
+                            <p class="text-slate-400 text-sm leading-relaxed">حل بررمجي متكامل لتتبع طلبات العملاء، إدارة الاستشارات، ورفع كفاءة الاستجابة.</p>
+                        </div>
+                        <div class="pt-6 border-t border-slate-800/80 flex items-center justify-between mt-6">
+                            <span class="text-xs text-slate-500">نظام سحابي Cloud</span>
+                            <a href="#contact" class="bg-brandAccent/20 hover:bg-brandAccent text-brandAccent hover:text-white font-medium text-xs px-4 py-2 rounded-lg transition-colors">معاينة النظام</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Articles & Knowledge Blog Section -->
+        <section id="blog" class="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto relative">
+            <div class="glow-bg glow-purple top-10 left-10"></div>
+
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+                <div>
+                    <span class="text-brandAccent font-semibold text-sm">مدونة الفاتح التقنية</span>
+                    <h2 class="text-3xl sm:text-4xl font-bold text-white mt-2">مقالات ورؤى برمجية</h2>
+                    <p class="text-slate-400 mt-2">نشارككم أهم الخبرات البرمجية، النصائح التقنية، واتجاهات التكنولوجيا الحديثة.</p>
+                </div>
+                <!-- Interactive Article Creation Button -->
+                <button id="openArticleModal" class="bg-gradient-to-r from-brandAccent to-blue-600 hover:from-blue-600 hover:to-brandAccent text-white text-sm font-semibold px-5 py-3 rounded-xl shadow-lg shadow-blue-500/25 transition-all duration-200">
+                    + إضافة مقال جديد
+                </button>
+            </div>
+
+            <!-- Articles Grid Container -->
+            <div id="articlesContainer" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 relative z-10">
+                
+                <!-- Initial Article 1 -->
+                <article class="bg-brandCard border border-slate-800 rounded-2xl overflow-hidden hover:border-slate-700 transition-all flex flex-col justify-between">
+                    <div>
+                        <div class="relative h-48 bg-slate-800 overflow-hidden">
+                            <img src="logo.png" alt="أهمية أتمتة الأنظمة" class="w-full h-full object-cover opacity-80 hover:scale-105 transition-transform duration-500">
+                            <span class="absolute top-3 right-3 bg-brandDark/80 backdrop-blur-md text-brandAccent text-xs px-3 py-1 rounded-full font-medium border border-brandAccent/30">برمجيات</span>
+                        </div>
+                        <div class="p-6 space-y-3">
+                            <span class="text-xs text-slate-500">15 فبراير 2026</span>
+                            <h3 class="text-lg font-bold text-white hover:text-brandAccent transition-colors">أهمية بناء أنظمة برمجية مخصصة للشركات</h3>
+                            <p class="text-slate-400 text-sm leading-relaxed">كيف تساهم البرمجيات المصممة بخصيصاً في رفع الكفاءة التشغيلية وتقليل التكاليف الإدارية.</p>
+                        </div>
+                    </div>
+                    <div class="p-6 pt-0">
+                        <a href="#contact" class="text-brandAccent text-xs font-semibold hover:underline flex items-center gap-1">اقرأ التفاصيل ←</a>
+                    </div>
+                </article>
+
+                <!-- Initial Article 2 -->
+                <article class="bg-brandCard border border-slate-800 rounded-2xl overflow-hidden hover:border-slate-700 transition-all flex flex-col justify-between">
+                    <div>
+                        <div class="relative h-48 bg-slate-800 overflow-hidden">
+                            <img src="logo.png" alt="أمان البيانات" class="w-full h-full object-cover opacity-80 hover:scale-105 transition-transform duration-500">
+                            <span class="absolute top-3 right-3 bg-brandDark/80 backdrop-blur-md text-brandTeal text-xs px-3 py-1 rounded-full font-medium border border-brandTeal/30">أمان وحماية</span>
+                        </div>
+                        <div class="p-6 space-y-3">
+                            <span class="text-xs text-slate-500">10 فبراير 2026</span>
+                            <h3 class="text-lg font-bold text-white hover:text-brandAccent transition-colors">معايير أمان البيانات في تطبيقات الجوال الحديثة</h3>
+                            <p class="text-slate-400 text-sm leading-relaxed">نظرة على أهم طرق التشفير وحماية بيانات المستخدمين في بيئة العمل السحابية.</p>
+                        </div>
+                    </div>
+                    <div class="p-6 pt-0">
+                        <a href="#contact" class="text-brandAccent text-xs font-semibold hover:underline flex items-center gap-1">اقرأ التفاصيل ←</a>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+        <!-- Solutions Overview Section -->
+        <section id="solutions" class="py-20 bg-slate-900/40 border-y border-slate-800/80 px-4 sm:px-6 lg:px-8">
+            <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-12">
+                <div class="space-y-6 max-w-xl">
+                    <span class="text-brandTeal font-semibold text-sm">لماذا تختار الفاتح للبرمجيات؟</span>
+                    <h2 class="text-3xl sm:text-4xl font-bold text-white leading-snug">نهج برجماتي يركز على الجودة والنمو المستدام</h2>
+                    <p class="text-slate-300 leading-relaxed">
+                        نحن لا نكتفي بإنشاء كود برجمي، بل ندرس أهداف عملك بعناية لنقدم حلولاً هندسية مرنة وقابلة للتوسع توفر عليك الوقت والجهد وتزيد من ربحية مشروعك.
+                    </p>
+                    <ul class="space-y-3 text-slate-300">
+                        <li class="flex items-center gap-3">
+                            <span class="w-5 h-5 rounded-full bg-brandAccent/20 text-brandAccent flex items-center justify-center text-xs font-bold">✓</span>
+                            <span>التزام صارم بمعايير الأمان وسرعة الأداء.</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <span class="w-5 h-5 rounded-full bg-brandAccent/20 text-brandAccent flex items-center justify-center text-xs font-bold">✓</span>
+                            <span>دعم فني مستمر وتحديثات دورية متواصلة.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="w-full md:w-1/2 p-6 rounded-2xl bg-brandCard border border-slate-800 shadow-2xl space-y-4">
+                    <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+                        <span class="text-sm text-slate-400">مؤشرات الإنجاز والجودة</span>
+                        <span class="w-3 h-3 rounded-full bg-emerald-500"></span>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4 pt-2">
+                        <div class="p-4 rounded-xl bg-slate-800/50 text-center">
+                            <div class="text-3xl font-extrabold text-brandAccent">100%</div>
+                            <div class="text-xs text-slate-400 mt-1">حماية وأمان للبيانات</div>
+                        </div>
+                        <div class="p-4 rounded-xl bg-slate-800/50 text-center">
+                            <div class="text-3xl font-extrabold text-brandTeal">24/7</div>
+                            <div class="text-xs text-slate-400 mt-1">توافر وكفاءة التشغيل</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact & Form Section -->
+        <section id="contact" class="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto relative">
+            <div class="glow-bg glow-purple bottom-0 right-0"></div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start relative z-10">
+                
+                <!-- Contact Direct Info -->
+                <div class="space-y-8">
+                    <div>
+                        <h2 class="text-3xl sm:text-4xl font-bold text-white mb-4">تواصل معنا اليوم</h2>
+                        <p class="text-slate-400 leading-relaxed">هل لديك فكرة مشروع أو ترغب في تطوير نظامك الحالي؟ نحن هنا لمساعدتك في اتخاذ الخطوة البرمجية الصحيحة.</p>
+                    </div>
+
+                    <div class="space-y-4">
+                        <!-- Email Card -->
+                        <a href="mailto:almoalmywaddih@gmail.com" class="flex items-center gap-4 p-4 rounded-xl bg-brandCard border border-slate-800 hover:border-slate-700 transition-colors group">
+                            <div class="w-12 h-12 rounded-lg bg-blue-500/10 text-brandAccent flex items-center justify-center shrink-0">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                                </svg>
+                            </div>
+                            <div class="overflow-hidden">
+                                <span class="block text-xs text-slate-400">البريد الإلكتروني المباشر</span>
+                                <span class="font-semibold text-white text-sm sm:text-base group-hover:text-brandAccent transition-colors truncate block">almoalmywaddih@gmail.com</span>
+                            </div>
+                        </a>
+
+                        <!-- WhatsApp Action Card -->
+                        <a href="https://wa.me/967717245976" target="_blank" rel="noopener noreferrer" class="flex items-center gap-4 p-4 rounded-xl bg-brandCard border border-slate-800 hover:border-emerald-500/40 transition-colors group">
+                            <div class="w-12 h-12 rounded-lg bg-emerald-500/10 text-emerald-400 flex items-center justify-center shrink-0">
+                                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <span class="block text-xs text-slate-400">مراسلة سريعة عبر الواتساب</span>
+                                <span class="font-semibold text-white text-sm sm:text-base group-hover:text-emerald-400 transition-colors">اضغط هنا للتحدث معنا مباشرة</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Interactive Contact Form -->
+                <div class="bg-brandCard p-8 rounded-2xl border border-slate-800 shadow-2xl">
+                    <form id="contactForm" class="space-y-5">
+                        <div>
+                            <label class="block text-sm font-medium text-slate-300 mb-1.5">الاسم الكامل</label>
+                            <input type="text" id="formName" required placeholder="أدخل اسمك الكريم" class="w-full px-4 py-3 rounded-xl custom-input text-sm">
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium text-slate-300 mb-1.5">البريد الإلكتروني</label>
+                            <input type="email" id="formEmail" required placeholder="example@domain.com" class="w-full px-4 py-3 rounded-xl custom-input text-sm">
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium text-slate-300 mb-1.5">الخدمة المطلوبة</label>
+                            <select id="formService" class="w-full px-4 py-3 rounded-xl custom-input text-sm text-slate-300 bg-slate-900">
+                                <option value="تطوير أنظمة">تطوير البرمجيات والأنظمة الخاصة</option>
+                                <option value="تطبيق جوال">تطبيقات الجوال (iOS / Android)</option>
+                                <option value="أتمتة وحلول">أدوات وأتمتة ذكية وتكامل الأنظمة</option>
+                                <option value="تصميم واجهات">تصميم واجهات وتجربة المستخدم</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium text-slate-300 mb-1.5">تفاصيل الرسالة</label>
+                            <textarea id="formMessage" rows="4" required placeholder="اكتب تفاصيل مشروعك أو استفسارك هنا..." class="w-full px-4 py-3 rounded-xl custom-input text-sm resize-none"></textarea>
+                        </div>
+
+                        <button type="submit" class="w-full bg-gradient-to-r from-brandAccent to-blue-600 hover:from-blue-600 hover:to-brandAccent text-white font-semibold py-3.5 rounded-xl shadow-lg shadow-blue-500/25 transition-all duration-200">
+                            أرسل رسالتك الآن
+                        </button>
+                    </form>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer with Distinctive Arabic & English Typography -->
+    <footer class="border-t border-slate-800/80 bg-slate-950 py-12 px-4 sm:px-6 lg:px-8 text-center text-sm text-slate-400">
+        <div class="max-w-7xl mx-auto space-y-6">
+            
+            <!-- Footer Brand & Logo -->
+            <div class="flex flex-col items-center justify-center space-y-3">
+                <img src="logo.png" alt="علامة الفاتح" class="w-16 h-16 object-contain brand-glow rounded-xl p-1 bg-slate-900 border border-slate-700">
+                <span class="text-xl font-bold text-white tracking-wide">الفاتح للبرمجيات</span>
+            </div>
+
+            <!-- Arabic Rights in Distinct Arabic Font -->
+            <div class="font-brandTitle text-lg sm:text-xl text-slate-200 tracking-wide border-t border-slate-900 pt-6">
+                برمجة وتطوير: <span class="text-brandAccent font-bold">وديع المعلمي</span> | جميع الحقوق محفوظة الفاتح للبرمجيات 2026
+            </div>
+
+            <!-- Modern English Rights -->
+            <div class="font-english text-xs text-slate-500 tracking-wider uppercase">
+                Developed & Programmed by <span class="text-slate-300 font-semibold">Wadih Almualmy</span> | All Rights Reserved Alfatih Software 2026
+            </div>
+
+            <div class="text-[11px] text-slate-600 font-sans">
+                Alfatih Software Solution Infrastructure
+            </div>
+        </div>
+    </footer>
+
+    <!-- Interactive Article Modal -->
+    <div id="articleModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden flex items-center justify-center p-4">
+        <div class="bg-brandCard border border-slate-800 w-full max-w-lg rounded-2xl p-6 space-y-5 shadow-2xl relative">
+            <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+                <h3 class="text-lg font-bold text-white">نشر مقال جديد في المدونة</h3>
+                <button id="closeArticleModal" class="text-slate-400 hover:text-white font-bold text-xl">&times;</button>
+            </div>
+            <form id="newArticleForm" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-medium text-slate-300 mb-1">عنوان المقال</label>
+                    <input type="text" id="articleTitle" required placeholder="أدخل عنوان المقال" class="w-full px-3 py-2.5 rounded-xl custom-input text-sm">
+                </div>
+                <div>
+                    <label class="block text-xs font-medium text-slate-300 mb-1">التصنيف</label>
+                    <input type="text" id="articleCategory" required placeholder="مثال: برمجيات، ذكاء اصطناعي، تطبيقات" class="w-full px-3 py-2.5 rounded-xl custom-input text-sm">
+                </div>
+                <div>
+                    <label class="block text-xs font-medium text-slate-300 mb-1">ملخص المقال</label>
+                    <textarea id="articleSummary" rows="3" required placeholder="اكتب نبذة مختصرة عن المقال..." class="w-full px-3 py-2.5 rounded-xl custom-input text-sm resize-none"></textarea>
+                </div>
+                <div>
+                    <label class="block text-xs font-medium text-slate-300 mb-1">رابط الصورة (اختياري)</label>
+                    <input type="text" id="articleImage" placeholder="افتراضي: شعار الموقع (logo.png)" class="w-full px-3 py-2.5 rounded-xl custom-input text-sm">
+                </div>
+                <button type="submit" class="w-full bg-brandAccent hover:bg-blue-600 text-white font-semibold py-3 rounded-xl transition-colors text-sm">
+                    انشر المقال الآن
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Interactive Toast Notification -->
+    <div id="toastNotification" class="fixed bottom-5 left-5 z-50 transform translate-y-20 opacity-0 transition-all duration-300 max-w-md bg-slate-900 border border-emerald-500/50 text-white p-4 rounded-xl shadow-2xl flex items-center gap-3">
+        <div class="w-8 h-8 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center shrink-0">
+            ✓
+        </div>
+        <div>
+            <h4 class="font-bold text-sm text-emerald-400" id="toastTitle">تمت العملية بنجاح!</h4>
+            <p class="text-xs text-slate-300" id="toastMessage">شكراً لتواصلك مع الفاتح للبرمجيات، سنقوم بالرد عليك في أقرب وقت.</p>
+        </div>
+    </div>
+
+    <!-- Client-side Interactive Logic -->
+    <script>
+        // Mobile Drawer Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Toast Helper Function
+        const toast = document.getElementById('toastNotification');
+        const toastTitle = document.getElementById('toastTitle');
+        const toastMessage = document.getElementById('toastMessage');
+
+        function showToast(title, msg) {
+            toastTitle.textContent = title;
+            toastMessage.textContent = msg;
+            toast.classList.remove('translate-y-20', 'opacity-0');
+            toast.classList.add('translate-y-0', 'opacity-100');
+            setTimeout(() => {
+                toast.classList.remove('translate-y-0', 'opacity-100');
+                toast.classList.add('translate-y-20', 'opacity-0');
+            }, 4000);
+        }
+
+        // Contact Form Submit Handler
+        const contactForm = document.getElementById('contactForm');
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            showToast('تم استلام رسالتك بنجاح!', 'شكراً لتواصلك مع الفاتح للبرمجيات، سنقوم بالرد عليك في أقرب وقت.');
+            contactForm.reset();
+        });
+
+        // Article Modal & Dynamic Publishing Logic
+        const articleModal = document.getElementById('articleModal');
+        const openArticleModal = document.getElementById('openArticleModal');
+        const closeArticleModal = document.getElementById('closeArticleModal');
+        const newArticleForm = document.getElementById('newArticleForm');
+        const articlesContainer = document.getElementById('articlesContainer');
+
+        openArticleModal.addEventListener('click', () => {
+            articleModal.classList.remove('hidden');
+        });
+
+        closeArticleModal.addEventListener('click', () => {
+            articleModal.classList.add('hidden');
+        });
+
+        newArticleForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const title = document.getElementById('articleTitle').value;
+            const category = document.getElementById('articleCategory').value;
+            const summary = document.getElementById('articleSummary').value;
+            let image = document.getElementById('articleImage').value.trim();
+            
+            if(!image) {
+                image = 'logo.png';
+            }
+
+            // Create New Article Card Component
+            const articleCard = document.createElement('article');
+            articleCard.className = 'bg-brandCard border border-slate-800 rounded-2xl overflow-hidden hover:border-slate-700 transition-all flex flex-col justify-between';
+            articleCard.innerHTML = `
+                <div>
+                    <div class="relative h-48 bg-slate-800 overflow-hidden">
+                        <img src="${image}" alt="${title}" class="w-full h-full object-cover opacity-80 hover:scale-105 transition-transform duration-500">
+                        <span class="absolute top-3 right-3 bg-brandDark/80 backdrop-blur-md text-brandAccent text-xs px-3 py-1 rounded-full font-medium border border-brandAccent/30">${category}</span>
+                    </div>
+                    <div class="p-6 space-y-3">
+                        <span class="text-xs text-slate-500">الآن</span>
+                        <h3 class="text-lg font-bold text-white hover:text-brandAccent transition-colors">${title}</h3>
+                        <p class="text-slate-400 text-sm leading-relaxed">${summary}</p>
+                    </div>
+                </div>
+                <div class="p-6 pt-0">
+                    <a href="#contact" class="text-brandAccent text-xs font-semibold hover:underline flex items-center gap-1">اقرأ التفاصيل ←</a>
+                </div>
+            `;
+
+            // Insert New Article at the Start
+            articlesContainer.prepend(articleCard);
+            
+            articleModal.classList.add('hidden');
+            newArticleForm.reset();
+            showToast('تم نشر المقال بنجاح!', 'تمت إضافة المقال الجديد إلى مدونة الفاتح التقنية بنجاح.');
+        });
+    </script>
+</body>
+</html>
